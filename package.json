@@ -1,0 +1,22 @@
+{
+  "name": "@thinairthings/zoom-utils",
+  "version": "1.0.0",
+  "description": "Thin Air Zoom Utils",
+  "main": "dist/zoom-utils/src/index.js",
+  "types": "dist/zoom-utils/src/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ThinAirThings/zoom-utils.git"
+  },
+  "scripts": {
+    "npmpub": "tsc && git add . && git commit -m \"mod\" && git push && npm version patch && npm publish"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/",
+    "access": "public"
+  },
+  "keywords": [],
+  "author": "Dan Lannan",
+  "license": "MIT",
+  "dependencies": {}
+}
