@@ -2,8 +2,8 @@
   "name": "@thinairthings/zoom-utils",
   "version": "1.0.1",
   "description": "Thin Air Zoom Utils",
-  "main": "dist/zoom-utils/src/index.js",
-  "types": "dist/zoom-utils/src/index.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/ThinAirThings/zoom-utils.git"
