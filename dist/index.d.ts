@@ -5,6 +5,12 @@ export type ContainerState = {
     height: number;
     scale: number;
 };
+export type ScreenState = {
+    x: number;
+    y: number;
+    width: number;
+    height: number;
+};
 export type ViewportState = {
     x: number;
     y: number;
