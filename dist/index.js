@@ -20,10 +20,10 @@ function absoluteStateToScreenState(viewportState, state) {
 }
 exports.absoluteStateToScreenState = absoluteStateToScreenState;
 const getSelectionBoundingBox = (viewportState, selectedContainerStateMap) => {
-    let minX = 0;
-    let minY = 0;
-    let maxX = 0;
-    let maxY = 0;
+    let minX = Number.MAX_SAFE_INTEGER;
+    let minY = Number.MAX_SAFE_INTEGER;
+    let maxX = Number.MIN_SAFE_INTEGER;
+    let maxY = Number.MIN_SAFE_INTEGER;
     selectedContainerStateMap.forEach((containerState) => {
         const { x, y, width, height } = containerState;
         minX = Math.min(minX, x);
