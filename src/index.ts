@@ -57,3 +57,26 @@ export function absoluteStateToScreenState(viewportState: ViewportState, state: 
         height: (state.height !== undefined) ? state.height / viewportState.scale : undefined,
     };
 }
+
+
+export const getSelectionBoundingBox = (viewportState: ViewportState, selectedContainerStateMap: Map<string, ContainerState>): ScreenState => {
+    let minX = Number.MAX_SAFE_INTEGER;
+    let minY = Number.MAX_SAFE_INTEGER;
+    let maxX = Number.MIN_SAFE_INTEGER;
+    let maxY = Number.MIN_SAFE_INTEGER;
+
+    selectedContainerStateMap.forEach((containerState) => {
+        const { x, y, width, height } = containerState;
+        minX = Math.min(minX, x);
+        minY = Math.min(minY, y);
+        maxX = Math.max(maxX, x + width);
+        maxY = Math.max(maxY, y + height);
+    });
+
+    return {
+        x: 1/viewportState.scale * (minX + viewportState.x),
+        y: 1/viewportState.scale * (minY + viewportState.y),
+        width: 1/viewportState.scale * (maxX - minX),
+        height: 1/viewportState.scale * (maxY - minY),
+    };
+}

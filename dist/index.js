@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.absoluteStateToScreenState = exports.screenStateToAbsoluteState = void 0;
+exports.getSelectionBoundingBox = exports.absoluteStateToScreenState = exports.screenStateToAbsoluteState = void 0;
 function screenStateToAbsoluteState(viewportState, state) {
     return {
         x: (state.x !== undefined) ? (viewportState.scale * state.x) - viewportState.x : undefined,
@@ -19,3 +19,23 @@ function absoluteStateToScreenState(viewportState, state) {
     };
 }
 exports.absoluteStateToScreenState = absoluteStateToScreenState;
+const getSelectionBoundingBox = (viewportState, selectedContainerStateMap) => {
+    let minX = Number.MAX_SAFE_INTEGER;
+    let minY = Number.MAX_SAFE_INTEGER;
+    let maxX = Number.MIN_SAFE_INTEGER;
+    let maxY = Number.MIN_SAFE_INTEGER;
+    selectedContainerStateMap.forEach((containerState) => {
+        const { x, y, width, height } = containerState;
+        minX = Math.min(minX, x);
+        minY = Math.min(minY, y);
+        maxX = Math.max(maxX, x + width);
+        maxY = Math.max(maxY, y + height);
+    });
+    return {
+        x: 1 / viewportState.scale * (minX + viewportState.x),
+        y: 1 / viewportState.scale * (minY + viewportState.y),
+        width: 1 / viewportState.scale * (maxX - minX),
+        height: 1 / viewportState.scale * (maxY - minY),
+    };
+};
+exports.getSelectionBoundingBox = getSelectionBoundingBox;
