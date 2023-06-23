@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getSelectionBoundingBox = exports.absoluteStateToScreenState = exports.screenStateToAbsoluteState = void 0;
+exports.getSelectionBoundingBox = exports.screenLengthToAbsoluteLength = exports.absoluteLengthToScreenLength = exports.absoluteStateToScreenState = exports.screenStateToAbsoluteState = void 0;
 function screenStateToAbsoluteState(viewportState, state) {
     return {
         x: (state.x !== undefined) ? (viewportState.scale * state.x) - viewportState.x : undefined,
@@ -19,6 +19,14 @@ function absoluteStateToScreenState(viewportState, state) {
     };
 }
 exports.absoluteStateToScreenState = absoluteStateToScreenState;
+const absoluteLengthToScreenLength = (viewportState, length) => {
+    return length / viewportState.scale;
+};
+exports.absoluteLengthToScreenLength = absoluteLengthToScreenLength;
+const screenLengthToAbsoluteLength = (viewportState, length) => {
+    return length * viewportState.scale;
+};
+exports.screenLengthToAbsoluteLength = screenLengthToAbsoluteLength;
 const getSelectionBoundingBox = (viewportState, selectedContainerStateMap) => {
     let minX = Number.MAX_SAFE_INTEGER;
     let minY = Number.MAX_SAFE_INTEGER;

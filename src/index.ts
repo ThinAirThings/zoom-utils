@@ -48,7 +48,6 @@ export function absoluteStateToScreenState(viewportState: ViewportState, state: 
 export function absoluteStateToScreenState(viewportState: ViewportState, state: InputStateXY): { x: number, y: number };
 export function absoluteStateToScreenState(viewportState: ViewportState, state: InputStateWH): { width: number, height: number };
 export function absoluteStateToScreenState(viewportState: ViewportState, state: Partial<ContainerState>): Partial<ContainerState>;
-
 export function absoluteStateToScreenState(viewportState: ViewportState, state: Partial<ContainerState>): Partial<ContainerState> {
     return {
         x: (state.x !== undefined) ? (state.x + viewportState.x) / viewportState.scale : undefined,
@@ -58,7 +57,12 @@ export function absoluteStateToScreenState(viewportState: ViewportState, state: 
     };
 }
 
-
+export const absoluteLengthToScreenLength = (viewportState: ViewportState, length: number): number => {
+    return length / viewportState.scale;
+}
+export const screenLengthToAbsoluteLength = (viewportState: ViewportState, length: number): number => {
+    return length * viewportState.scale;
+}
 export const getSelectionBoundingBox = (viewportState: ViewportState, selectedContainerStateMap: Map<string, ContainerState>): ScreenState => {
     let minX = Number.MAX_SAFE_INTEGER;
     let minY = Number.MAX_SAFE_INTEGER;

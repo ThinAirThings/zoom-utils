@@ -58,5 +58,7 @@ export declare function absoluteStateToScreenState(viewportState: ViewportState,
     height: number;
 };
 export declare function absoluteStateToScreenState(viewportState: ViewportState, state: Partial<ContainerState>): Partial<ContainerState>;
+export declare const absoluteLengthToScreenLength: (viewportState: ViewportState, length: number) => number;
+export declare const screenLengthToAbsoluteLength: (viewportState: ViewportState, length: number) => number;
 export declare const getSelectionBoundingBox: (viewportState: ViewportState, selectedContainerStateMap: Map<string, ContainerState>) => ScreenState;
 export {};
