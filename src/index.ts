@@ -37,10 +37,10 @@ export function screenStateToAbsoluteState(viewportState: ViewportState, state: 
 
 export function screenStateToAbsoluteState(viewportState: ViewportState, state: Partial<ContainerState>): Partial<ContainerState> {
     return {
-        x: (state.x !== undefined) ? (viewportState.scale * state.x) - viewportState.x : undefined,
-        y: (state.y !== undefined) ? (viewportState.scale * state.y) - viewportState.y : undefined,
-        width: (state.width !== undefined) ? viewportState.scale * state.width : undefined,
-        height: (state.height !== undefined) ? viewportState.scale * state.height : undefined,
+        ...(state.x !== undefined && { x: (viewportState.scale * state.x) - viewportState.x }),
+        ...(state.y !== undefined && { y: (viewportState.scale * state.y) - viewportState.y }),
+        ...(state.width !== undefined && { width: viewportState.scale * state.width }),
+        ...(state.height !== undefined && { height: viewportState.scale * state.height })
     };
 }
 
@@ -50,10 +50,10 @@ export function absoluteStateToScreenState(viewportState: ViewportState, state: 
 export function absoluteStateToScreenState(viewportState: ViewportState, state: Partial<ContainerState>): Partial<ContainerState>;
 export function absoluteStateToScreenState(viewportState: ViewportState, state: Partial<ContainerState>): Partial<ContainerState> {
     return {
-        x: (state.x !== undefined) ? (state.x + viewportState.x) / viewportState.scale : undefined,
-        y: (state.y !== undefined) ? (state.y + viewportState.y) / viewportState.scale : undefined,
-        width: (state.width !== undefined) ? state.width / viewportState.scale : undefined,
-        height: (state.height !== undefined) ? state.height / viewportState.scale : undefined,
+        ...(state.x !== undefined && { x: (state.x + viewportState.x) / viewportState.scale }),
+        ...(state.y !== undefined && { y: (state.y + viewportState.y) / viewportState.scale }),
+        ...(state.width !== undefined && { width: state.width / viewportState.scale }),
+        ...(state.height !== undefined && { height: state.height / viewportState.scale })
     };
 }
 
