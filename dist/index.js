@@ -50,8 +50,8 @@ exports.getSelectionBoundingBox = getSelectionBoundingBox;
 const mouseEventToApplicationTranslation = (event, viewportState, containerState) => {
     const targetScreenState = absoluteStateToScreenState(viewportState, containerState);
     const pointRelativeToApplication = {
-        x: Math.round(containerState.scale * viewportState.scale * (event.clientX - targetScreenState.x)),
-        y: Math.round(containerState.scale * viewportState.scale * (event.clientY - targetScreenState.y))
+        x: Math.round(1 / containerState.scale * viewportState.scale * (event.clientX - targetScreenState.x)),
+        y: Math.round(1 / containerState.scale * viewportState.scale * (event.clientY - targetScreenState.y))
     };
     return pointRelativeToApplication;
 };
