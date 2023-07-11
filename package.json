@@ -1,6 +1,6 @@
 {
   "name": "@thinairthings/zoom-utils",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "Thin Air Zoom Utils",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
