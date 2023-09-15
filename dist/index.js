@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.mouseEventToApplicationTranslation = exports.getSelectionBoundingBox = exports.screenLengthToAbsoluteLength = exports.absoluteLengthToScreenLength = exports.absoluteStateToScreenState = exports.screenStateToAbsoluteState = void 0;
+exports.absoluteContainerStateToRelativeDimensions = exports.mouseEventToApplicationTranslation = exports.getSelectionBoundingBox = exports.screenLengthToAbsoluteLength = exports.absoluteLengthToScreenLength = exports.absoluteStateToScreenState = exports.screenStateToAbsoluteState = void 0;
 function screenStateToAbsoluteState(viewportState, state) {
     return {
         ...(state.x !== undefined && { x: (viewportState.scale * state.x) - viewportState.x }),
@@ -56,3 +56,10 @@ const mouseEventToApplicationTranslation = (event, viewportState, containerState
     return pointRelativeToApplication;
 };
 exports.mouseEventToApplicationTranslation = mouseEventToApplicationTranslation;
+const absoluteContainerStateToRelativeDimensions = (containerState) => {
+    return {
+        width: (1 / containerState.scale) * containerState.width,
+        height: (1 / containerState.scale) * containerState.height
+    };
+};
+exports.absoluteContainerStateToRelativeDimensions = absoluteContainerStateToRelativeDimensions;

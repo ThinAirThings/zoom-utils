@@ -93,3 +93,11 @@ export const mouseEventToApplicationTranslation = (event: PointerEvent | WheelEv
     }
     return pointRelativeToApplication
 }
+
+
+export const absoluteContainerStateToRelativeDimensions = (containerState: ContainerState) => {
+    return {
+        width: (1/containerState.scale) * containerState.width,
+        height: (1/containerState.scale) * containerState.height
+    }
+}

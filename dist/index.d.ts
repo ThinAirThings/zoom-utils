@@ -65,4 +65,8 @@ export declare const mouseEventToApplicationTranslation: (event: PointerEvent | 
     x: number;
     y: number;
 };
+export declare const absoluteContainerStateToRelativeDimensions: (containerState: ContainerState) => {
+    width: number;
+    height: number;
+};
 export {};
