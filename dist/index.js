@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.absoluteContainerStateToRelativeDimensions = exports.mouseEventToApplicationTranslation = exports.getSelectionBoundingBox = exports.screenLengthToAbsoluteLength = exports.absoluteLengthToScreenLength = exports.absoluteStateToScreenState = exports.screenStateToAbsoluteState = void 0;
+exports.ptDistance = exports.relativeDimensionsToAbsoluteDimensions = exports.absoluteContainerStateToRelativeDimensions = exports.mouseEventToApplicationTranslation = exports.getSelectionBoundingBox = exports.screenLengthToAbsoluteLength = exports.absoluteLengthToScreenLength = exports.absoluteStateToScreenState = exports.screenStateToAbsoluteState = void 0;
 function screenStateToAbsoluteState(viewportState, state) {
     return {
         ...(state.x !== undefined && { x: (viewportState.scale * state.x) - viewportState.x }),
@@ -63,3 +63,14 @@ const absoluteContainerStateToRelativeDimensions = (containerState) => {
     };
 };
 exports.absoluteContainerStateToRelativeDimensions = absoluteContainerStateToRelativeDimensions;
+const relativeDimensionsToAbsoluteDimensions = (containerState, dimensions) => {
+    return {
+        width: containerState.scale * dimensions.width,
+        height: containerState.scale * dimensions.height
+    };
+};
+exports.relativeDimensionsToAbsoluteDimensions = relativeDimensionsToAbsoluteDimensions;
+const ptDistance = (p1, p2) => {
+    return Math.sqrt(Math.pow(p1.x - p2.x, 2) + Math.pow(p1.y - p2.y, 2));
+};
+exports.ptDistance = ptDistance;

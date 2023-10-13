@@ -101,3 +101,15 @@ export const absoluteContainerStateToRelativeDimensions = (containerState: Conta
         height: (1/containerState.scale) * containerState.height
     }
 }
+
+export const relativeDimensionsToAbsoluteDimensions = (containerState: ContainerState, dimensions: InputStateWH) => {
+    return {
+        width: containerState.scale * dimensions.width,
+        height: containerState.scale * dimensions.height
+    }
+}
+
+
+export const ptDistance = (p1: Point, p2: Point) => {
+    return Math.sqrt(Math.pow(p1.x - p2.x, 2) + Math.pow(p1.y - p2.y, 2))
+}

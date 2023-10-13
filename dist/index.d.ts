@@ -69,4 +69,9 @@ export declare const absoluteContainerStateToRelativeDimensions: (containerState
     width: number;
     height: number;
 };
+export declare const relativeDimensionsToAbsoluteDimensions: (containerState: ContainerState, dimensions: InputStateWH) => {
+    width: number;
+    height: number;
+};
+export declare const ptDistance: (p1: Point, p2: Point) => number;
 export {};
