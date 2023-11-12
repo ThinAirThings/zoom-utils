@@ -63,13 +63,13 @@ export const absoluteLengthToScreenLength = (viewportState: ViewportState, lengt
 export const screenLengthToAbsoluteLength = (viewportState: ViewportState, length: number): number => {
     return length * viewportState.scale;
 }
-export const getSelectionBoundingBox = (viewportState: ViewportState, selectedContainerStateMap: Map<string, ContainerState>): ScreenState => {
+export const getSelectionBoundingBox = (viewportState: ViewportState, selectedContainerStatesSet: ContainerState[]): ScreenState => {
     let minX = Number.MAX_SAFE_INTEGER;
     let minY = Number.MAX_SAFE_INTEGER;
     let maxX = Number.MIN_SAFE_INTEGER;
     let maxY = Number.MIN_SAFE_INTEGER;
 
-    selectedContainerStateMap.forEach((containerState) => {
+    selectedContainerStatesSet.forEach((containerState) => {
         const { x, y, width, height } = containerState;
         minX = Math.min(minX, x);
         minY = Math.min(minY, y);
