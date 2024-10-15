@@ -1,36 +1,4 @@
-"use strict";
-var __defProp = Object.defineProperty;
-var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
-var __getOwnPropNames = Object.getOwnPropertyNames;
-var __hasOwnProp = Object.prototype.hasOwnProperty;
-var __export = (target, all) => {
-  for (var name in all)
-    __defProp(target, name, { get: all[name], enumerable: true });
-};
-var __copyProps = (to, from, except, desc) => {
-  if (from && typeof from === "object" || typeof from === "function") {
-    for (let key of __getOwnPropNames(from))
-      if (!__hasOwnProp.call(to, key) && key !== except)
-        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
-  }
-  return to;
-};
-var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
-
 // src/index.ts
-var src_exports = {};
-__export(src_exports, {
-  absoluteContainerStateToRelativeDimensions: () => absoluteContainerStateToRelativeDimensions,
-  absoluteLengthToScreenLength: () => absoluteLengthToScreenLength,
-  absoluteStateToScreenState: () => absoluteStateToScreenState,
-  getSelectionBoundingBox: () => getSelectionBoundingBox,
-  mouseEventToApplicationTranslation: () => mouseEventToApplicationTranslation,
-  ptDistance: () => ptDistance,
-  relativeDimensionsToAbsoluteDimensions: () => relativeDimensionsToAbsoluteDimensions,
-  screenLengthToAbsoluteLength: () => screenLengthToAbsoluteLength,
-  screenStateToAbsoluteState: () => screenStateToAbsoluteState
-});
-module.exports = __toCommonJS(src_exports);
 function screenStateToAbsoluteState(viewportState, state) {
   return {
     ...state.x !== void 0 && { x: viewportState.scale * state.x - viewportState.x },
@@ -95,8 +63,7 @@ var relativeDimensionsToAbsoluteDimensions = (containerState, dimensions) => {
 var ptDistance = (p1, p2) => {
   return Math.sqrt(Math.pow(p1.x - p2.x, 2) + Math.pow(p1.y - p2.y, 2));
 };
-// Annotate the CommonJS export names for ESM import in node:
-0 && (module.exports = {
+export {
   absoluteContainerStateToRelativeDimensions,
   absoluteLengthToScreenLength,
   absoluteStateToScreenState,
@@ -106,5 +73,5 @@ var ptDistance = (p1, p2) => {
   relativeDimensionsToAbsoluteDimensions,
   screenLengthToAbsoluteLength,
   screenStateToAbsoluteState
-});
-//# sourceMappingURL=index.js.map
+};
+//# sourceMappingURL=index.mjs.map
